@@ -1,6 +1,10 @@
 <template>
+  <my-select
+    v-model="selectedSort"
+    :options="sortOptions"
+  />
   <div class="cafe-list__items"
-    v-for="post in posts"
+    v-for="post in sortedPosts"
     :key="post.id"
   >
     <img :src="post.photo" :alt="post.name" class="cafe-list__img">
@@ -55,25 +59,26 @@
 
 <script>
 import axios from 'axios';
-
+import {usePosts} from "@/hooks/usePosts";
+import useSortedPosts from '@/hooks/useSortedPost';
 export default {
   data() {
     return {
-      posts: []
+      sortOptions: [
+        {value: 'business_lunch', name: 'Сначала с бизнес ланчем'},
+        {value: 'price', name: 'По цене'},
+      ]
     }
   },
-  methods: {
-    async fetchPosts() {
-      try {
-        const responce = await axios.get('https://bandaumnikov.ru/api/test/site/get-index');
-        this.posts = responce.data.data;
-      } catch(err) {
-        alert('Ошибка')
-      }
+  setup(props) {
+    const {posts} = usePosts();
+    const {sortedPosts, selectedSort} = useSortedPosts(posts);
+
+    return {
+      posts,
+      sortedPosts,
+      selectedSort,
     }
-  },
-  mounted() {
-    this.fetchPosts();
   }
 }
 </script>
@@ -85,7 +90,7 @@ export default {
   max-width: 100%;
   border-radius: 10px 10px;
   box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.1);
-  background-color: rgba(360, 360, 360, 0.3);
+  background-color: rgba(360, 360, 360, 0.9);
   margin-bottom: 25px;
 }
 
