@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import CafeList from './CafeList.vue';
+import CafeList from '../components/CafeList.vue';
 import {usePosts} from "@/hooks/usePosts";
 import useSortedPosts from '@/hooks/useSortedPost';
 import useSearchAndSorted from '@/hooks/useSearchAndSorted'
-import MyInput from './UI/MyInput.vue';
+import MyInput from '../components/UI/MyInput.vue';
 export default {
  components: {
     CafeList

@@ -1,14 +1,13 @@
 <template>
     <div class="app__content">
-      <places />
+      <router-view></router-view>
     </div>
 </template>
 
 <script>
-import Places from './components/Places.vue';
 export default {
   components: {
-    Places
+
   }
 }
 </script>
