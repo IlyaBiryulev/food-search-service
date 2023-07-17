@@ -1,23 +1,66 @@
 <template>
   <div class="places">
-    <cafe-list />
+    <div class="places__search-sort">
+      <my-input
+        v-model="searchQuery"
+        placeholder="Поиск"
+      />
+      <my-select
+        v-model="selectedSort"
+        :options="sortOptions"
+      />
+    </div>
+    <cafe-list
+      :posts="sortedAndSearchedPosts"
+    />
   </div>
 </template>
 
 <script>
 import CafeList from './CafeList.vue';
+import {usePosts} from "@/hooks/usePosts";
+import useSortedPosts from '@/hooks/useSortedPost';
+import useSearchAndSorted from '@/hooks/useSearchAndSorted'
+import MyInput from './UI/MyInput.vue';
 export default {
  components: {
     CafeList
- }
+ },
+ data() {
+    return {
+      sortOptions: [
+        {value: 'business_lunch', name: 'Сначала с бизнес ланчем'},
+        {value: 'price', name: 'По цене'},
+      ]
+    }
+  },
+  setup(props) {
+    const {posts} = usePosts();
+    const {sortedPosts, selectedSort} = useSortedPosts(posts);
+    const {searchQuery, sortedAndSearchedPosts} = useSearchAndSorted(sortedPosts)
+
+    return {
+      posts,
+      sortedPosts,
+      selectedSort,
+      searchQuery,
+      sortedAndSearchedPosts
+    }
+  }
 }
 </script>
 
 <style>
   .places {
-    width: 750px;
     display: flex;
     flex-direction: column;
     margin: 50px auto;
+  }
+
+  .places__search-sort {
+    min-height: 35px;
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    margin-bottom: 35px;
   }
 </style>

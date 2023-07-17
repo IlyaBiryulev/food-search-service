@@ -1,10 +1,6 @@
 <template>
-  <my-select
-    v-model="selectedSort"
-    :options="sortOptions"
-  />
   <div class="cafe-list__items"
-    v-for="post in sortedPosts"
+    v-for="post in posts"
     :key="post.id"
   >
     <img :src="post.photo" :alt="post.name" class="cafe-list__img">
@@ -58,26 +54,11 @@
 
 
 <script>
-import axios from 'axios';
-import {usePosts} from "@/hooks/usePosts";
-import useSortedPosts from '@/hooks/useSortedPost';
 export default {
-  data() {
-    return {
-      sortOptions: [
-        {value: 'business_lunch', name: 'Сначала с бизнес ланчем'},
-        {value: 'price', name: 'По цене'},
-      ]
-    }
-  },
-  setup(props) {
-    const {posts} = usePosts();
-    const {sortedPosts, selectedSort} = useSortedPosts(posts);
-
-    return {
-      posts,
-      sortedPosts,
-      selectedSort,
+  props: {
+    posts: {
+      type: Array,
+      required: true
     }
   }
 }
@@ -87,7 +68,7 @@ export default {
  .cafe-list__items {
   display: flex;
   box-sizing: border-box;
-  max-width: 100%;
+  width: 100%;
   border-radius: 10px 10px;
   box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.1);
   background-color: rgba(360, 360, 360, 0.9);

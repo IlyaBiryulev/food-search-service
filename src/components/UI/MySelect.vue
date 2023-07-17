@@ -1,5 +1,5 @@
 <template>
-  <select :value="modelValue" @change="changeOption">
+  <select :value="modelValue" @change="changeOption" class="select">
     <option disabled value="">Выберите из списка</option>
     <option
       v-for="option in options"
@@ -33,5 +33,8 @@ export default {
 </script>
 
 <style>
+ .select {
+  cursor: pointer;
+ }
 
 </style>
