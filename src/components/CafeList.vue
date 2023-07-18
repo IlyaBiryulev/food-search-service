@@ -44,10 +44,10 @@
     <p class="cafe-list__price"
       v-if="post.price === 0"
     >
-      Средний чек <span class="cafe-list__span">-</span>
+      Средний чек: <span class="cafe-list__span">-</span>
     </p>
     <p class="cafe-list__price"
-      v-else>Средний чек <span class="cafe-list__span">{{ post.price }}</span>
+      v-else>Средний чек: <span class="cafe-list__span">{{ post.price }}</span>
     </p>
   </div>
 </template>

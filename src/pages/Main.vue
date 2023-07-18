@@ -1,22 +1,32 @@
 <template>
- <div class="main">
-    <h1 class="main__title">FoodSearch</h1>
-    <div class="main-page">
-      <img src="http://cafe-teplo.com/wp-content/uploads/2018/12/photo_2018-05-10_19-22-09.jpg" alt="" class="main-page__img">
-      <ul class="main-page__list">
-        <li class="main-page__list-item"><h2 class="main-page__list-title">Интерсные статьи о еде в Питере</h2></li>
-        <li class="main-page__list-item" v-for="item in items" :key="item.id"><a :href="item.link" class="main-page__link">{{ item.name }}</a></li>
-      </ul>
-      <div class="main-page__btn-wrapper">
-        <router-link to="/places" class="main-page__route"><button class="main-page__btn">Список заведений</button></router-link>
-        <button class="main-page__btn">Случайный выбор заведения</button>
+  <div>
+    <my-dialog v-model:show="dialogVisible">
+      <div v-for="post in randomPosts" :key="post.id">
+        <h1>{{ post.name }}</h1>
+      </div>
+    </my-dialog>
+    <div class="main">
+      <h1 class="main__title">FoodSearch</h1>
+      <div class="main-page">
+        <img src="http://cafe-teplo.com/wp-content/uploads/2018/12/photo_2018-05-10_19-22-09.jpg" alt="" class="main-page__img">
+        <ul class="main-page__list">
+          <li class="main-page__list-item"><h2 class="main-page__list-title">Интерсные статьи о еде в Питере</h2></li>
+          <li class="main-page__list-item" v-for="item in items" :key="item.id"><a :href="item.link" class="main-page__link">{{ item.name }}</a></li>
+        </ul>
+        <div class="main-page__btn-wrapper">
+          <router-link to="/places" class="main-page__route"><button class="main-page__btn">Список заведений</button></router-link>
+          <button class="main-page__btn" @click="showDialog">Случайный выбор заведения</button>
+        </div>
       </div>
     </div>
- </div>
+  </div>
 </template>
 
 <script>
+import MyDialog from '@/components/UI/MyDialog.vue'
+import {useRandomPost} from '@/hooks/useRandomPost';
 export default {
+  components: { MyDialog },
  data() {
   return {
     items: [
@@ -25,7 +35,20 @@ export default {
       {id: 3, link: 'https://www.sobaka.ru/bars/chtogdeest/166930', name: 'Главные гастрономические события лета'},
       {id: 4, link: 'https://www.sobaka.ru/bars/chtogdeest/166945', name: 'Лучшие винные бары'},
       {id: 5, link: 'https://www.sobaka.ru/bars/chtogdeest/167375', name: 'Гастрономические рынки'},
-    ]
+    ],
+    dialogVisible: false,
+  }
+ },
+ setup(props) {
+    const {randomPosts} = useRandomPost();
+
+    return {
+      randomPosts
+    }
+  },
+  methods: {
+  showDialog () {
+    this.dialogVisible = true;
   }
  }
 }
@@ -57,7 +80,7 @@ export default {
   }
 
   .main-page__list {
-    background-color: #C7DBC7;
+    background-color: rgba(360, 360, 360, .9);
     margin: 0;
     border-radius: 0 10px 10px 0;
     padding: 0;
@@ -94,7 +117,7 @@ export default {
   }
 
   .main-page__btn-wrapper {
-    margin: 20px auto;
+    margin-top: 20px;
   }
 
   .main-page__btn {
@@ -103,9 +126,9 @@ export default {
     font-weight: 500;
     font-size: 25px;
     line-height: 16px;
-    background: #C7DBC7;
+    background-color: rgba(360, 360, 360, .9);
     border: 1px solid #000;
-    border-radius: 5px;
+    border-radius: 2px;
     padding: 10px 50px;
     cursor: pointer;
   }
