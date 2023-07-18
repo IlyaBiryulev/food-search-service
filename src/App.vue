@@ -24,6 +24,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-weight: 400;
+    font-family: "Inter", "Arial", sans-serif;
   }
 </style>
