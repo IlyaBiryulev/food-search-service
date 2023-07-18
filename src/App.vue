@@ -23,6 +23,7 @@ export default {
   .app__content {
     display: flex;
     flex-direction: column;
+    align-items: center;
     font-weight: 400;
   }
 </style>
