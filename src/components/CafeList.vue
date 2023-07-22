@@ -70,7 +70,6 @@ export default {
   box-sizing: border-box;
   width: 100%;
   border-radius: 10px 10px;
-  box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.1);
   background-color: rgba(360, 360, 360, 0.9);
   margin-bottom: 25px;
 }

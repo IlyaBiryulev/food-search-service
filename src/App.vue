@@ -1,13 +1,15 @@
 <template>
-    <div class="app__content">
-      <router-view></router-view>
-    </div>
+  <div class="app__content">
+    <NavTabVue/>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
+import NavTabVue from './components/NavTab.vue';
 export default {
   components: {
-
+    NavTabVue
   }
 }
 </script>

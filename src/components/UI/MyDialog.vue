@@ -1,6 +1,7 @@
 <template>
-  <div class="dialog" v-if="show" @click="hideDialog">
+  <div class="dialog" v-if="show">
     <div class="dialog__content">
+      <button class="dialog__close-btn" @click="hideDialog"></button>
       <slot></slot>
     </div>
   </div>
@@ -38,9 +39,8 @@ export default {
     margin: auto;
     background: #fff;
     border-radius: 12px;
-    min-width: 800px;
-    min-height: 300px;
     padding: 15px 15px;
+    position: relative;
   }
 
   .dialog__content-wrapper {
@@ -69,5 +69,16 @@ export default {
     font-size: 20px;
     line-height: 15px;
     margin: 20px 0 0;
+  }
+
+  .dialog__close-btn {
+    width: 32px;
+    height: 32px;
+    background: url('../../assets/img/close-button_icon-icons.com_72803.png') no-repeat transparent;
+    border: none;
+    position: absolute;
+    cursor: pointer;
+    top: -40px;
+    right: 0;
   }
 </style>

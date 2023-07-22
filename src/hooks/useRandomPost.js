@@ -1,5 +1,5 @@
 import axios from "axios";
-import {ref, onUpdated, onMounted} from 'vue';
+import {ref, onBeforeUpdate} from 'vue';
 
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
@@ -16,7 +16,7 @@ export function useRandomPost() {
     }
   }
 
-  onMounted(fetching)
+  onBeforeUpdate(fetching)
 
   return {
     randomPosts

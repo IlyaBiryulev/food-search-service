@@ -1,6 +1,6 @@
 <template>
   <div>
-    <my-dialog v-model:show="dialogVisible">
+    <!-- <my-dialog v-model:show="dialogVisible">
       <div v-for="post in randomPosts" :key="post.id" class="dialog__content-wrapper">
         <div class="dialog__info">
           <h1 class="dialog__title">{{ post.name }}</h1>
@@ -11,7 +11,7 @@
         </div>
         <img :src="post.photo" :alt="post.name" class="dialog__img">
       </div>
-    </my-dialog>
+    </my-dialog> -->
     <div class="main">
       <h1 class="main__title">FoodSearch</h1>
       <div class="main-page">
@@ -23,22 +23,20 @@
           <li class="main-page__list-item"><h2 class="main-page__list-title">Интерсные статьи о еде в Питере</h2></li>
           <li class="main-page__list-item" v-for="item in items" :key="item.id"><a :href="item.link" class="main-page__link">{{ item.name }}</a></li>
         </ul>
-        <div class="main-page__btn-wrapper">
+       <!--  <div class="main-page__btn-wrapper">
           <router-link to="/places" class="main-page__route"><button class="main-page__btn">Список заведений</button></router-link>
           <button class="main-page__btn" @click="showDialog">Случайный выбор заведения</button>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import MyDialog from '@/components/UI/MyDialog.vue';
 import Slider from '@/components/Slider.vue';
-import {useRandomPost} from '@/hooks/useRandomPost';
 import {usePosts} from '@/hooks/usePosts';
 export default {
-  components: { MyDialog, Slider },
+  components: { Slider },
  data() {
   return {
     items: [
@@ -53,18 +51,11 @@ export default {
  },
  setup(props) {
     const {posts} = usePosts();
-    const {randomPosts} = useRandomPost();
 
     return {
-      posts,
-      randomPosts
+      posts
     }
   },
-  methods: {
-  showDialog () {
-    this.dialogVisible = true;
-  }
- }
 }
 </script>
 
@@ -72,7 +63,7 @@ export default {
   .main {
     max-width: 1150px;
     min-width: 320px;
-    margin-top: 100px;
+    margin-top: 50px;
   }
 
   .main__title {
