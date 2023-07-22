@@ -1,14 +1,24 @@
 <template>
   <div>
     <my-dialog v-model:show="dialogVisible">
-      <div v-for="post in randomPosts" :key="post.id">
-        <h1>{{ post.name }}</h1>
+      <div v-for="post in randomPosts" :key="post.id" class="dialog__content-wrapper">
+        <div class="dialog__info">
+          <h1 class="dialog__title">{{ post.name }}</h1>
+          <p class="dialog__text">{{ post.address }}</p>
+          <p class="dialog__text">{{ post.cuisine }}</p>
+          <p class="dialog__text">{{ post.business_lunch }}</p>
+          <p class="dialog__text">{{ post.price }}</p>
+        </div>
+        <img :src="post.photo" :alt="post.name" class="dialog__img">
       </div>
     </my-dialog>
     <div class="main">
       <h1 class="main__title">FoodSearch</h1>
       <div class="main-page">
-        <img src="http://cafe-teplo.com/wp-content/uploads/2018/12/photo_2018-05-10_19-22-09.jpg" alt="" class="main-page__img">
+        <slider
+          :sliderData="posts"
+          :interval="8000"
+        />
         <ul class="main-page__list">
           <li class="main-page__list-item"><h2 class="main-page__list-title">Интерсные статьи о еде в Питере</h2></li>
           <li class="main-page__list-item" v-for="item in items" :key="item.id"><a :href="item.link" class="main-page__link">{{ item.name }}</a></li>
@@ -23,10 +33,12 @@
 </template>
 
 <script>
-import MyDialog from '@/components/UI/MyDialog.vue'
+import MyDialog from '@/components/UI/MyDialog.vue';
+import Slider from '@/components/Slider.vue';
 import {useRandomPost} from '@/hooks/useRandomPost';
+import {usePosts} from '@/hooks/usePosts';
 export default {
-  components: { MyDialog },
+  components: { MyDialog, Slider },
  data() {
   return {
     items: [
@@ -40,9 +52,11 @@ export default {
   }
  },
  setup(props) {
+    const {posts} = usePosts();
     const {randomPosts} = useRandomPost();
 
     return {
+      posts,
       randomPosts
     }
   },
