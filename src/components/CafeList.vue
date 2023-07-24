@@ -31,15 +31,16 @@
         </p>
       </li>
     </ul>
-    <p class="cafe-list__lunch"
+    <div class="cafe-list__info">
+      <p class="cafe-list__lunch"
       v-if="post.business_lunch"
     >
-      Бизнес ланч <span class="cafe-list__span">Есть</span>
+      Бизнес ланч: <span class="cafe-list__span">Есть</span>
     </p>
     <p class="cafe-list__lunch"
       v-else
     >
-      Бизнес ланч <span class="cafe-list__span">Нет</span>
+      Бизнес ланч: <span class="cafe-list__span">Нет</span>
     </p>
     <p class="cafe-list__price"
       v-if="post.price === 0"
@@ -49,6 +50,7 @@
     <p class="cafe-list__price"
       v-else>Средний чек: <span class="cafe-list__span">{{ post.price }}</span>
     </p>
+    </div>
   </div>
 </template>
 
@@ -66,17 +68,18 @@ export default {
 
 <style>
  .cafe-list__items {
-  display: flex;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: 1fr 250px 1fr;
   box-sizing: border-box;
-  width: 100%;
   border-radius: 10px 10px;
   background-color: rgba(360, 360, 360, 0.9);
-  margin-bottom: 25px;
+  margin:12px 20px 12px;
 }
 
 .cafe-list__img {
-  min-width: 250px;
-  height: 170px;
+  min-width: 300px;
+  height: 200px;
   border-radius: 10px 10px ;
 }
 
@@ -85,11 +88,10 @@ export default {
   flex-direction: column;
   list-style: none;
   padding: 0;
-  margin-left: 20px;
+  margin: 16px 0 15px 16px;
 }
 
 .cafe-list__item {
-  width: 250px;
   font-weight: 500;
   font-size: 15px;
   line-height: 16px;
@@ -106,14 +108,18 @@ export default {
   color: gray;
 }
 
+.cafe-list__info {
+  display: flex;
+}
+
 .cafe-list__lunch {
-  width: 115px;
   text-align: center;
+  margin-right: 10px;
 }
 
 .cafe-list__price {
-  width: 95px;
   text-align: center;
+  margin-right: 15px;
 }
 
 .cafe-list__span {
@@ -126,5 +132,54 @@ export default {
   font-size: 20px;
   line-height: 16px;
   margin: 0;
+}
+
+@media screen and (max-width: 781px) {
+  .cafe-list__items {
+    grid-template-columns: 1fr 150px 1fr;
+  }
+}
+
+@media screen and (max-width: 681px) {
+  .cafe-list__items {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cafe-list__img {
+    width: 100%;
+    height: 300px;
+    grid-column: span 2;
+  }
+}
+
+@media screen and (max-width: 364px) {
+  .cafe-list__items {
+    grid-template-columns: 2fr 1fr;
+    margin: 7px 10px 7px;
+  }
+
+  .cafe-list__item {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .cafe-list__title {
+    font-size: 15px;
+    line-height: 12px;
+  }
+
+  .cafe-list__info {
+    flex-direction: column;
+    font-size: 10px;
+  }
+
+  .cafe-list__span {
+    font-size: 14px;
+  }
+
+  .cafe-list__address {
+    margin: 0;
+    padding-top: 20px;
+  }
 }
 </style>

@@ -60,7 +60,7 @@ export default {
   .places__search-sort {
     min-height: 35px;
     display: grid;
-    grid-template-columns: 1fr 150px;
-    margin-bottom: 35px;
+    grid-template-columns: 3fr 1fr;
+    margin: 0 20px 35px;
   }
 </style>

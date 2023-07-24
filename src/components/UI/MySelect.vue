@@ -35,6 +35,7 @@ export default {
 <style>
  .select {
   cursor: pointer;
+  border-radius: none;
  }
 
 </style>
