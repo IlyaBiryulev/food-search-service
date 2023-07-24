@@ -35,30 +35,20 @@
 
 ### Ссылки
 
-[Ссылка на страницу сайта](https://moviedomen.nomoredomains.rocks)
-
-<!-- ### Директории проекта
-
-- `src/components` — компоненты проекта
-- `src/contexts` — элементами контекста
-- `src/utils` — директория с api, константами и вспомогательными функциями проекта
-- `src/images` — изображения
-- `src/vendor` — директория с файлами библиотек
-- `/fonts` — директория со шрифтами
+[Ссылка на страницу сайта](https://ilyabiryulev.github.io/food-search-service/)
 
 ### Запуск проекта
 
 - `npm run build` — запуск проекта в режиме продакшн
-- `npm start` — запуск проекта в режиме разработки
+- `npm run serve` — запуск проекта в режиме разработки
 
 ## Технологии
 
 - HTML
 - CSS
 - JS
-- React
-- React Router
-- Create React App
+- Vue
+- Vue Router
 - Адаптивная вёрстка
 - Семантическая вёрстка
 
@@ -68,4 +58,4 @@
 
 - e-mail: birulevila@gmail.com
 - tg: [@ilya_bir](https://t.me/ilya_bir)
- -->
+
