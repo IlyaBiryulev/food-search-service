@@ -61,12 +61,12 @@ export default {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin: 10px;
+    border: 1px solid #000;
   }
 
   .main-page__list {
     background-color: rgba(360, 360, 360, .9);
     margin: 0;
-    border-radius: 0 10px 10px 0;
     padding: 0;
   }
 

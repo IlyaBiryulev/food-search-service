@@ -11,19 +11,12 @@
           Главная
         </button>
       </router-link>
-      <button class="navtab__btn" @click="showDialog">Случайный выбор</button>
-      <my-dialog v-model:show="dialogVisible">
-        <cafe-list
-          :posts="randomPosts"
-        />
-      </my-dialog>
     </div>
   </div>
 </template>
 
 <script>
 import MyDialog from '@/components/UI/MyDialog.vue';
-import {useRandomPost} from '@/hooks/useRandomPost';
 import CafeList from './CafeList.vue';
 export default {
   components: { MyDialog, CafeList },
@@ -33,11 +26,7 @@ export default {
   }
  },
  setup(props) {
-    const {randomPosts} = useRandomPost();
 
-    return {
-      randomPosts
-    }
   },
   methods: {
   showDialog () {

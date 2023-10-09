@@ -1,8 +1,7 @@
 <template>
   <div class="slider-item">
-    <img :src="itemData.photo" :alt="itemData.name" class="slider-item__img">
+    <img :src="itemData.heroImgUrl" :alt="itemData.name" class="slider-item__img">
     <p class="slider-item__title">{{ itemData.name }}</p>
-    <p class="slider-item__address">{{ itemData.address }}</p>
   </div>
 </template>
 

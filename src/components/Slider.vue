@@ -81,20 +81,24 @@ export default {
   }
 
  .slider__btn_next {
+    display: none;
     background: url('../assets/img/next.png') no-repeat center;
   }
 
  .slider__btn_prev {
+    display: none;
     background: url('../assets/img/prev.png') no-repeat center;
   }
 
  .slider:hover .slider__btn_prev {
+    display: block;
     position: absolute;
     left: 0;
     bottom: 250px;
   }
 
  .slider:hover .slider__btn_next {
+    display: block;
     position: absolute;
     right: 0;
     bottom: 250px;

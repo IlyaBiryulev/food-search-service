@@ -18,15 +18,8 @@ export default {
 
 <style scoped>
 .input {
-  /* width: 585px; */
   border: 1px solid #000;
   padding: 5px 5px;
 }
-
-/* @media screen and (max-width: 781px) {
-  .input {
-  width: 400px;
-}
-} */
 
 </style>
